@@ -145,4 +145,5 @@ class line4:
                     self.turn *= -1
                     print("Player " + str(self.turn) + "'s turn.")
 
-a = line4()
+if __name__ == '__main__':
+    a = line4()
