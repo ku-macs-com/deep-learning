@@ -1,11 +1,11 @@
 import numpy as np
 
-class line4:
+class Line4:
 
     def __init__(self):
         self.state = np.zeros((4,4,4), dtype = int)
         self.turn = 1
-        self.N_stone = 0
+        self.n_stone = 0
         self.disp()
         print("Player " + str(self.turn) + "'s turn.")
 
@@ -125,7 +125,7 @@ class line4:
             print()
 
     def step(self,put_place):
-        if (self.N_stone == 64):
+        if (self.n_stone == 64):
             self.disp()
             print("Draw.")
 
@@ -133,13 +133,13 @@ class line4:
         if (not success):
             print("Put the stone elsewhere.")
         else:
-            self.N_stone += 1
+            self.n_stone += 1
             self.disp()
             formed = self.lined([put_place[0], put_place[1], iz])
             if (formed):
                 print("Player " + str(self.turn) + " won!")
             else:
-                if (self.N_stone == 64):
+                if (self.n_stone == 64):
                     print("Draw.")
                 else:
                     self.turn *= -1
