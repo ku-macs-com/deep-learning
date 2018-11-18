@@ -17,15 +17,15 @@ class Line4:
         is also returned
         [input]
         put_place (array 4x4, integer):
-            the place (x, y) where the player is trying 
+            the place (x, y) where the player is trying
             to put the stone
         [output]
         success (True or False):
             the stone was put (or not)
         put_z (integer):
             z element of the place where the stone was put
-        
         '''
+
         put_place = np.array(put_place)
         tower = self.state[put_place[0], put_place[1], :]
         if ( np.prod(tower != 0) ):
@@ -53,7 +53,7 @@ class Line4:
         '''
         put_place3D = np.array(put_place3D)
         # turn = self.state[put_place3D[0], put_place3D[1], put_place3D[2]]
-    
+
         tower = self.state[put_place3D[0], put_place3D[1],:]
         formed = np.prod(tower == self.turn)
 
@@ -66,7 +66,7 @@ class Line4:
             formed = np.prod(tower == self.turn)
 
         edge = put_place3D % 3
-    
+
         if (not formed):
             if (edge[0] != 0 and edge[1] != 0):
                 if (put_place3D[0] == put_place3D[1]):
@@ -78,7 +78,7 @@ class Line4:
                         [self.state[i,3-i,put_place3D[2]]
                          for i in range(4)] )
                     formed = np.prod(tower == self.turn)
-        
+
         if (not formed):
             if (edge[0] != 0 and edge[2] != 0):
                 if (put_place3D[0] == put_place3D[2]):
@@ -128,7 +128,7 @@ class Line4:
         if (self.n_stone == 64):
             self.disp()
             print("Draw.")
-    
+
         success, iz = self.put_stone(put_place)
         if (not success):
             print("Put the stone elsewhere.")
@@ -145,5 +145,5 @@ class Line4:
                     self.turn *= -1
                     print("Player " + str(self.turn) + "'s turn.")
 
-a = Line4()
-
+if __name__ == '__main__':
+    a = line4()
